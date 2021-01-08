@@ -1,11 +1,3 @@
-grid =
-        <<~STR
-         __ __ __
-        |  |  |  |
-        |__|__|__|
-        |  |  |  |
-        |__|__|__|
-        |  |  |  |
-        |__|__|__|
-        STR
-puts grid
+require_relative 'grid'
+
+Grid.new(STDOUT).render

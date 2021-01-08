@@ -12,9 +12,17 @@ RSpec.describe 'Runner' do
     STR
   end
 
-  # specify { expect { run }.to output(grid).to_stdout }
+  let(:mock_stdout) { StringIO.new }
+
+  before do
+    $stdout = mock_stdout
+  end
+
+  after { $stdout = STDOUT }
 
   it 'renders an empty grid' do
     expect(run).to eq grid
   end
+
+  # specify { expect { run }.to output(grid).to_stdout }
 end
