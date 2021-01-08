@@ -1,0 +1,7 @@
+version: '3.8'
+
+services:
+  oo-tic-tac-toe:
+    build: .
+    volumes:
+      - ./:/usr/src/app
