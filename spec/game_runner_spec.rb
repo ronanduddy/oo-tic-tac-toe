@@ -2,13 +2,14 @@ RSpec.describe 'Runner' do
   let(:run) { `ruby tic_tac_toe/game_runner.rb` }
   let(:grid) do
     <<~STR
-     __ __ __
-    |  |  |  |
-    |__|__|__|
-    |  |  |  |
-    |__|__|__|
-    |  |  |  |
-    |__|__|__|
+        1  2  3
+        __ __ __
+    A  |  |  |  |
+       |__|__|__|
+    B  |  |  |  |
+       |__|__|__|
+    C  |  |  |  |
+       |__|__|__|
     STR
   end
 
