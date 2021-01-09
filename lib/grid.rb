@@ -14,7 +14,10 @@ class Grid
              |__|__|__|
           C  |  |  |  |
              |__|__|__|
+
+          Enter your move >
             STR
+            
     @stdout.puts(grid)
   end
 end

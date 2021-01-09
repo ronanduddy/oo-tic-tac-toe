@@ -1,4 +1,4 @@
-require './tic_tac_toe/grid'
+require 'grid'
 
 RSpec.describe Grid do
   let(:mock_stdout) { StringIO.new }
@@ -16,6 +16,8 @@ RSpec.describe Grid do
        |__|__|__|
     C  |  |  |  |
        |__|__|__|
+
+    Enter your move >
       STR
     end
 

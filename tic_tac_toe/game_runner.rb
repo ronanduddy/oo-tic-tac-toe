@@ -1,3 +1,3 @@
-require_relative 'grid'
+require_relative '../lib/game'
 
-Grid.new(STDOUT).render
+Game.new($stdin, $stdout).run
