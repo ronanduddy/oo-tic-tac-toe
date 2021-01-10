@@ -1,22 +1,24 @@
 require_relative 'grid'
+require_relative 'coordinates'
 
 class Game
   def initialize(stdin, stdout)
     @stdin = stdin
     @stdout = stdout
+
+    @grid = Grid.new(@stdout)
   end
 
   def run
     game_over = false
-    grid = Grid.new(@stdout)
-    coordinates = ''
+    coordinates = nil
 
     loop do
-      grid.render
-      grid.prompt
-      coordinates = @stdin.gets
+      @grid.render
+      @grid.prompt
+      coordinates = Coordinates.new(@stdin.gets)
 
-      if valid?(coordinates)
+      if coordinates.valid?
         game_over = true
       else
         @stdout.puts("#{coordinates} is invalid")
@@ -26,13 +28,5 @@ class Game
     end
 
     @stdout.puts("#{coordinates} - good move bye!")
-  end
-
-  private
-
-  def valid?(coordinates)
-    alpha, digit = coordinates.split('')
-
-    alpha.match?(/[A-C]/) && digit.match?(/[1-3]/)
   end
 end
