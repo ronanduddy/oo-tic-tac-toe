@@ -15,6 +15,7 @@ RSpec.describe Grid do
        |__|__|__|
     C  |  |  |  |
        |__|__|__|
+
       STR
     end
 

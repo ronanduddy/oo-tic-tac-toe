@@ -14,6 +14,7 @@ class Grid
              |__|__|__|
           C  |  |  |  |
              |__|__|__|
+
             STR
 
     @stdout.puts(grid)
