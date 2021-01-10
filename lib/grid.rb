@@ -14,10 +14,12 @@ class Grid
              |__|__|__|
           C  |  |  |  |
              |__|__|__|
-
-          Enter your move >
             STR
-            
+
     @stdout.puts(grid)
+  end
+
+  def prompt
+    @stdout.puts('Enter your move >')
   end
 end
