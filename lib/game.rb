@@ -19,12 +19,16 @@ class Game
       coordinate = Coordinate.new(input)
 
       if coordinate.valid?
+        @grid.add(coordinate)
         game_over = true
       else
         @messager.tell("#{coordinate} is invalid")
       end
 
-      break if game_over
+      if game_over
+        @grid.render
+        break
+      end
     end
 
     @messager.tell("#{coordinate} - good move bye!")

@@ -20,6 +20,15 @@ RSpec.describe Game do
            |__|__|__|
 
         Enter your move >
+            1  2  3
+            __ __ __
+        A  |X |  |  |
+           |__|__|__|
+        B  |  |  |  |
+           |__|__|__|
+        C  |  |  |  |
+           |__|__|__|
+
         A1 - good move bye!
         STR
       end
@@ -59,6 +68,15 @@ RSpec.describe Game do
            |__|__|__|
 
         Enter your move >
+            1  2  3
+            __ __ __
+        A  |X |  |  |
+           |__|__|__|
+        B  |  |  |  |
+           |__|__|__|
+        C  |  |  |  |
+           |__|__|__|
+
         A1 - good move bye!
         STR
       end
