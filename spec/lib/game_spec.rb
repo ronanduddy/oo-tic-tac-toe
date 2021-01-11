@@ -29,11 +29,25 @@ RSpec.describe Game do
         C  |  |  |  |
            |__|__|__|
 
-        A1 - good move bye!
+        A1 - good move.
+        Robot enters C3!
+            1  2  3
+            __ __ __
+        A  |X |  |  |
+           |__|__|__|
+        B  |  |  |  |
+           |__|__|__|
+        C  |  |  |O |
+           |__|__|__|
+
+        Bye!
         STR
       end
 
-      before { allow(mock_stdin).to receive(:gets).and_return('A1') }
+      before do
+        allow(mock_stdin).to receive(:gets).and_return('A1')
+        allow(Coordinate).to receive(:random).and_return('C3')
+      end
 
       it 'renders the grid, prompts user and exits' do
         expect(mock_stdin).to receive(:gets)
@@ -43,8 +57,6 @@ RSpec.describe Game do
     end
 
     context 'when the user enter a bad coordinate' do
-      before { allow(mock_stdin).to receive(:gets).and_return('Z1', 'A1') }
-
       let(:grid) do
         <<~STR
             1  2  3
@@ -77,8 +89,24 @@ RSpec.describe Game do
         C  |  |  |  |
            |__|__|__|
 
-        A1 - good move bye!
+        A1 - good move.
+        Robot enters C3!
+            1  2  3
+            __ __ __
+        A  |X |  |  |
+           |__|__|__|
+        B  |  |  |  |
+           |__|__|__|
+        C  |  |  |O |
+           |__|__|__|
+
+        Bye!
         STR
+      end
+
+      before do
+        allow(mock_stdin).to receive(:gets).and_return('Z1', 'A1')
+        allow(Coordinate).to receive(:random).and_return('C3')
       end
 
       it 'renders the grid, prompts and quits upon a correct move' do

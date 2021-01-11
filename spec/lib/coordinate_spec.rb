@@ -4,6 +4,12 @@ RSpec.describe Coordinate do
   let(:coordinate) { described_class.new(input) }
   let(:input) { 'A1' }
 
+  describe '.random' do
+    10.times do
+      it { expect(described_class.random.valid?).to be true }
+    end
+  end
+
   describe '#to_s' do
     it { expect(coordinate.to_s).to eq 'A1' }
   end

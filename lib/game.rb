@@ -16,7 +16,14 @@ class Game
       coordinate = Coordinate.new(value)
 
       if coordinate.valid?
-        @state.grid.add(coordinate)
+        @state.grid.add(coordinate, 'X')
+        @messenger.tell(@state.grid.to_s)
+        @messenger.tell("#{coordinate} - good move.")
+
+        random_coordinate = Coordinate.random
+        @state.grid.add(random_coordinate, 'O')
+        @messenger.tell("Robot enters #{random_coordinate}!")
+
         @state.end_game
       else
         @messenger.tell("#{coordinate} is invalid")
@@ -24,7 +31,7 @@ class Game
 
       if @state.game_over?
         @messenger.tell(@state.grid.to_s)
-        @messenger.tell("#{coordinate} - good move bye!")
+        @messenger.tell("Bye!")
 
         break
       end

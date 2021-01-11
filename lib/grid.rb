@@ -20,7 +20,7 @@ class Grid
     sprintf(BOARD, @coordinates)
   end
 
-  def add(coordinate)
-    @coordinates[coordinate.to_s.intern] = 'X'
+  def add(coordinate, mark)
+    @coordinates[coordinate.to_s.intern] = mark
   end
 end

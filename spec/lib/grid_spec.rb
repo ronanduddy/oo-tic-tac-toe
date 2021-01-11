@@ -2,7 +2,6 @@ require 'grid'
 require 'shared_context/coordinate'
 
 RSpec.describe Grid do
-
   let(:grid) { described_class.new }
 
   describe '#board' do
@@ -29,6 +28,7 @@ RSpec.describe Grid do
     include_context 'coordinate'
 
     let(:value) { 'B2' }
+    let(:mark) { 'X' }
 
     let(:grid_output) do
       <<~STR
@@ -45,7 +45,7 @@ RSpec.describe Grid do
     end
 
     it 'adds coordinate to coordinates' do
-      grid.add(coordinate)
+      grid.add(coordinate, mark)
       expect(grid.to_s).to eq grid_output
     end
   end
