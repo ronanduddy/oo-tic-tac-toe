@@ -5,12 +5,12 @@ require_relative 'coordinate'
 class Game
   def initialize(stdin, stdout)
     @messenger = Messenger.new(stdin, stdout)
-    @state = State.new(@messenger)
+    @state = State.new
   end
 
   def run
     loop do
-      @state.grid.render
+      @messenger.tell(@state.grid.to_s)
       value = @messenger.ask('Enter your move >')
 
       coordinate = Coordinate.new(value)
@@ -23,7 +23,7 @@ class Game
       end
 
       if @state.game_over?
-        @state.grid.render
+        @messenger.tell(@state.grid.to_s)
         @messenger.tell("#{coordinate} - good move bye!")
 
         break

@@ -11,23 +11,16 @@ class Grid
 
             STR
 
-  def initialize(messenger)
-    @messenger = messenger
+  def initialize
     @coordinates = {}
   end
 
-  def render
-    @messenger.tell(board_state)
+  def to_s
+    @coordinates.default = ' '
+    sprintf(BOARD, @coordinates)
   end
 
   def add(coordinate)
     @coordinates[coordinate.to_s.intern] = 'X'
-  end
-
-  private
-
-  def board_state
-    @coordinates.default = ' '
-    sprintf(BOARD, @coordinates)
   end
 end

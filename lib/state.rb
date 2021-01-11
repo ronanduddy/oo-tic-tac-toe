@@ -3,8 +3,8 @@ require_relative 'grid'
 class State
   attr_reader :grid
 
-  def initialize(messenger)
-    @grid = Grid.new(messenger)
+  def initialize
+    @grid = Grid.new
     @game_over = false
   end
 

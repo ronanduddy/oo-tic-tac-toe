@@ -1,13 +1,11 @@
 require 'grid'
-require 'shared_context/messenger'
 require 'shared_context/coordinate'
 
 RSpec.describe Grid do
-  include_context 'messenger'
 
-  let(:grid) { described_class.new(messenger) }
+  let(:grid) { described_class.new }
 
-  describe '#render' do
+  describe '#board' do
     let(:grid_output) do
       <<~STR
         1  2  3
@@ -22,9 +20,8 @@ RSpec.describe Grid do
       STR
     end
 
-    it 'renders an empty grid' do
-      grid.render
-      expect(mock_stdout.string).to eq grid_output
+    it 'returns an empty grid' do
+      expect(grid.to_s).to eq grid_output
     end
   end
 
@@ -49,8 +46,7 @@ RSpec.describe Grid do
 
     it 'adds coordinate to coordinates' do
       grid.add(coordinate)
-      grid.render
-      expect(mock_stdout.string).to eq grid_output
+      expect(grid.to_s).to eq grid_output
     end
   end
 end
