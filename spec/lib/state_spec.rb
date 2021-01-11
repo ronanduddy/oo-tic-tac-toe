@@ -1,10 +1,10 @@
 require 'state'
-require 'shared_context/messager'
+require 'shared_context/messenger'
 
 RSpec.describe State do
-  include_context 'messager'
+  include_context 'messenger'
 
-  let(:state) { described_class.new(messager) }
+  let(:state) { described_class.new(messenger) }
 
   describe '#game_over?' do
     it { expect(state.game_over?).to be false }

@@ -11,13 +11,13 @@ class Grid
 
             STR
 
-  def initialize(messager)
-    @messager = messager
+  def initialize(messenger)
+    @messenger = messenger
     @coordinates = {}
   end
 
   def render
-    @messager.tell(board_state)
+    @messenger.tell(board_state)
   end
 
   def add(coordinate)

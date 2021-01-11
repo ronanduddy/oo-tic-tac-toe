@@ -1,10 +1,10 @@
 require 'grid'
-require_relative 'messager'
+require_relative 'messenger'
 
 RSpec.shared_context 'grid' do
-  include_context 'messager'
+  include_context 'messenger'
 
-  let(:grid) { Grid.new(messager) }
+  let(:grid) { Grid.new(messenger) }
 end
 
 RSpec.configure do |rspec|

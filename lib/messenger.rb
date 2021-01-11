@@ -1,11 +1,11 @@
-class Messager
+class Messenger
   def initialize(stdin, stdout)
     @stdin = stdin
     @stdout = stdout
   end
 
   def ask(message)
-    tell(message)    
+    tell(message)
     @stdin.gets
   end
 

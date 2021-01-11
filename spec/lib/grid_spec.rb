@@ -1,11 +1,11 @@
 require 'grid'
-require 'shared_context/messager'
+require 'shared_context/messenger'
 require 'shared_context/coordinate'
 
 RSpec.describe Grid do
-  include_context 'messager'
+  include_context 'messenger'
 
-  let(:grid) { described_class.new(messager) }
+  let(:grid) { described_class.new(messenger) }
 
   describe '#render' do
     let(:grid_output) do
