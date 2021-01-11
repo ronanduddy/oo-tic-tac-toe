@@ -7,7 +7,7 @@ RSpec.describe Game do
   let(:game) { described_class.new(mock_stdin, mock_stdout) }
 
   describe '#run' do
-    context 'when the user enters good coordinates' do
+    context 'when the user enters a good coordinate' do
       let(:grid) do
         <<~STR
             1  2  3
@@ -33,7 +33,7 @@ RSpec.describe Game do
       end
     end
 
-    context 'when the user enters bad coordinates' do
+    context 'when the user enter a bad coordinate' do
       before { allow(mock_stdin).to receive(:gets).and_return('Z1', 'A1') }
 
       let(:grid) do

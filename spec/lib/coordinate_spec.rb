@@ -1,15 +1,15 @@
-require 'coordinates'
+require 'coordinate'
 
-RSpec.describe Coordinates do
-  let(:coordinates) { described_class.new(input) }
+RSpec.describe Coordinate do
+  let(:coordinate) { described_class.new(input) }
   let(:input) { 'A1' }
 
   describe '#to_s' do
-    it { expect(coordinates.to_s).to eq 'A1' }
+    it { expect(coordinate.to_s).to eq 'A1' }
   end
 
   describe '#valid?' do
-    subject(:valid?) { coordinates.valid? }
+    subject(:valid?) { coordinate.valid? }
 
     context 'when valid' do
       [

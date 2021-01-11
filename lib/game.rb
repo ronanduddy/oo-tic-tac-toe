@@ -1,5 +1,5 @@
 require_relative 'grid'
-require_relative 'coordinates'
+require_relative 'coordinate'
 require_relative 'messager'
 
 class Game
@@ -10,23 +10,23 @@ class Game
 
   def run
     game_over = false
-    coordinates = nil
+    coordinate = nil
 
     loop do
       @grid.render
 
       input = @messager.ask('Enter your move >')
-      coordinates = Coordinates.new(input)
+      coordinate = Coordinate.new(input)
 
-      if coordinates.valid?
+      if coordinate.valid?
         game_over = true
       else
-        @messager.tell("#{coordinates} is invalid")
+        @messager.tell("#{coordinate} is invalid")
       end
 
       break if game_over
     end
 
-    @messager.tell("#{coordinates} - good move bye!")
+    @messager.tell("#{coordinate} - good move bye!")
   end
 end
