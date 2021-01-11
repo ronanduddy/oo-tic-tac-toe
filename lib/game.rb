@@ -9,7 +9,7 @@ class Game
   end
 
   def run
-    loop do
+    while @state.playing? do
       @messenger.tell(@state.grid.to_s)
       value = @messenger.ask('Enter your move >')
 
@@ -28,13 +28,9 @@ class Game
       else
         @messenger.tell("#{coordinate} is invalid")
       end
-
-      if @state.game_over?
-        @messenger.tell(@state.grid.to_s)
-        @messenger.tell("Bye!")
-
-        break
-      end
     end
+
+    @messenger.tell(@state.grid.to_s)
+    @messenger.tell("Bye!")
   end
 end
