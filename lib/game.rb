@@ -1,36 +1,33 @@
-require_relative 'grid'
-require_relative 'coordinate'
 require_relative 'messager'
+require_relative 'state'
+require_relative 'coordinate'
 
 class Game
   def initialize(stdin, stdout)
     @messager = Messager.new(stdin, stdout)
-    @grid = Grid.new(@messager)
+    @state = State.new(@messager)
   end
 
   def run
-    game_over = false
-    coordinate = nil
-
     loop do
-      @grid.render
+      @state.grid.render
+      value = @messager.ask('Enter your move >')
 
-      input = @messager.ask('Enter your move >')
-      coordinate = Coordinate.new(input)
+      coordinate = Coordinate.new(value)
 
       if coordinate.valid?
-        @grid.add(coordinate)
-        game_over = true
+        @state.grid.add(coordinate)
+        @state.end_game
       else
         @messager.tell("#{coordinate} is invalid")
       end
 
-      if game_over
-        @grid.render
+      if @state.game_over?
+        @state.grid.render
+        @messager.tell("#{coordinate} - good move bye!")
+        
         break
       end
     end
-
-    @messager.tell("#{coordinate} - good move bye!")
   end
 end
