@@ -5,8 +5,8 @@ class Messager
   end
 
   def ask(message)
-    tell(message)
-    @stdin.gets message
+    tell(message)    
+    @stdin.gets
   end
 
   def tell(message)
