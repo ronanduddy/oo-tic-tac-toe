@@ -1,8 +1,10 @@
 require 'grid'
+require 'shared_context/messager'
 
 RSpec.describe Grid do
-  let(:grid) { described_class.new(mock_stdout) }
-  let(:mock_stdout) { StringIO.new }
+  include_context 'messager'
+
+  let(:grid) { described_class.new(messager) }
 
   context '#render' do
     let(:grid_output) do
@@ -22,15 +24,6 @@ RSpec.describe Grid do
     it 'renders an empty grid' do
       grid.render
       expect(mock_stdout.string).to eq grid_output
-    end
-  end
-
-  context '#prompt' do
-    let(:prompt_output) { 'Enter your move >' }
-
-    it 'renders an empty grid' do
-      grid.prompt
-      expect(mock_stdout.string).to eq prompt_output
     end
   end
 end

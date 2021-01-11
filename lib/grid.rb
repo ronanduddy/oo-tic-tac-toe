@@ -17,10 +17,6 @@ class Grid
 
             STR
 
-    @messager.print(grid)
-  end
-
-  def prompt
-    @messager.print('Enter your move >')
+    @messager.tell(grid)
   end
 end

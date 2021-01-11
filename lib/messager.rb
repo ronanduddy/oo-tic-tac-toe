@@ -1,9 +1,15 @@
 class Messager
-  def initialize(stdout)
+  def initialize(stdin, stdout)
+    @stdin = stdin
     @stdout = stdout
   end
 
-  def print(message)
+  def ask(message)
+    tell(message)
+    @stdin.gets message
+  end
+
+  def tell(message)
     @stdout.puts message
   end
 end

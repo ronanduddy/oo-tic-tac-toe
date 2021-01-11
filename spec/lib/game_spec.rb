@@ -1,9 +1,10 @@
 require 'game'
+require 'shared_context/stdlib'
 
 RSpec.describe Game do
+  include_context 'stdlib'
+
   let(:game) { described_class.new(mock_stdin, mock_stdout) }
-  let(:mock_stdin) { StringIO.new }
-  let(:mock_stdout) { StringIO.new }
 
   describe '#run' do
     context 'when the user enters good coordinates' do

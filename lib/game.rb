@@ -4,9 +4,7 @@ require_relative 'messager'
 
 class Game
   def initialize(stdin, stdout)
-    @stdin = stdin
-    @messager = Messager.new(stdout)
-
+    @messager = Messager.new(stdin, stdout)
     @grid = Grid.new(@messager)
   end
 
@@ -16,18 +14,19 @@ class Game
 
     loop do
       @grid.render
-      @grid.prompt
-      coordinates = Coordinates.new(@stdin.gets)
+
+      input = @messager.ask('Enter your move >')
+      coordinates = Coordinates.new(input)
 
       if coordinates.valid?
         game_over = true
       else
-        @messager.print("#{coordinates} is invalid")
+        @messager.tell("#{coordinates} is invalid")
       end
 
       break if game_over
     end
 
-    @messager.print("#{coordinates} - good move bye!")
+    @messager.tell("#{coordinates} - good move bye!")
   end
 end
