@@ -1,6 +1,6 @@
 class Grid
-  def initialize(stdout)
-    @stdout = stdout
+  def initialize(messager)
+    @messager = messager
   end
 
   def render
@@ -17,10 +17,10 @@ class Grid
 
             STR
 
-    @stdout.puts(grid)
+    @messager.print(grid)
   end
 
   def prompt
-    @stdout.puts('Enter your move >')
+    @messager.print('Enter your move >')
   end
 end

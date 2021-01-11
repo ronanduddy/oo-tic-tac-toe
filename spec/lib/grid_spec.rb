@@ -26,11 +26,7 @@ RSpec.describe Grid do
   end
 
   context '#prompt' do
-    let(:prompt_output) do
-      <<~STR
-      Enter your move >
-      STR
-    end
+    let(:prompt_output) { 'Enter your move >' }
 
     it 'renders an empty grid' do
       grid.prompt

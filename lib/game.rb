@@ -1,12 +1,13 @@
 require_relative 'grid'
 require_relative 'coordinates'
+require_relative 'messager'
 
 class Game
   def initialize(stdin, stdout)
     @stdin = stdin
-    @stdout = stdout
+    @messager = Messager.new(stdout)
 
-    @grid = Grid.new(@stdout)
+    @grid = Grid.new(@messager)
   end
 
   def run
@@ -21,12 +22,12 @@ class Game
       if coordinates.valid?
         game_over = true
       else
-        @stdout.puts("#{coordinates} is invalid")
+        @messager.print("#{coordinates} is invalid")
       end
 
       break if game_over
     end
 
-    @stdout.puts("#{coordinates} - good move bye!")
+    @messager.print("#{coordinates} - good move bye!")
   end
 end
