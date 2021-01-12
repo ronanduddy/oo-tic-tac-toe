@@ -1,12 +1,14 @@
 require_relative 'coordinate'
 
 class Player
-  def initialize(marker)
-    @marker = marker
+  attr_reader :mark, :coordinate
+
+  def initialize(mark)
+    @mark = mark
   end
 
   def random_move
-    Coordinate.random
+    @coordinate = Coordinate.random
   end
 
   def move(value)

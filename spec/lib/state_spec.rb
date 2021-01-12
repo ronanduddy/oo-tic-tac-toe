@@ -1,4 +1,5 @@
 require 'state'
+require 'player'
 
 RSpec.describe State do
   let(:state) { described_class.new }
@@ -21,5 +22,17 @@ RSpec.describe State do
     end
 
     it { expect(state.board).to eq 'board state' }
+  end
+
+  describe '#update' do
+    let(:player) { instance_double(Player, coordinate: 'A1', mark: 'X') }
+
+    before do
+      allow(Grid).to receive(:new).and_return(
+        instance_double(Grid, add: true)
+      )
+    end
+
+    it { expect(state.update(player)).to be true }
   end
 end

@@ -16,13 +16,13 @@ class Game
       move = @messenger.ask('Enter your move >')
 
       if @player.move(move).valid?
-        @state.grid.add(move, 'X')
+        @state.update(@player)
         print_board
         print("#{move} - good move.")
 
-        computer_move = @computer.random_move
-        @state.grid.add(computer_move, 'O')
-        print("Robot enters #{computer_move}!")
+        @computer.random_move
+        @state.update(@computer)
+        print("Robot enters #{@computer.coordinate}!")
 
         @state.end_game
       else

@@ -9,7 +9,11 @@ RSpec.describe Player do
   end
 
   describe '#move' do
-    it { expect(player.move('A1')).to eq player }
+    it 'Sets coordinate and returns self' do
+      expect(player.coordinate).to be nil
+      expect(player.move('A1')).to eq player
+      expect(player.coordinate.to_s).to eq 'A1'
+    end
   end
 
   describe '#valid?' do

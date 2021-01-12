@@ -19,4 +19,8 @@ class State
   def board
     @grid.to_s
   end
+
+  def update(player)
+    @grid.add(player.coordinate, player.mark)
+  end
 end
