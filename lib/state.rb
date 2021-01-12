@@ -1,6 +1,8 @@
 require_relative 'grid'
 
 class State
+  attr_reader :grid
+
   def initialize
     @grid = Grid.new
     @game_over = false
@@ -12,10 +14,6 @@ class State
 
   def playing?
     !@game_over
-  end
-
-  def board
-    @grid.to_s
   end
 
   def update(player)
