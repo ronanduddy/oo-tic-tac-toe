@@ -17,6 +17,7 @@ class Grid
 
   def to_s
     @coordinates.default = ' '
+    
     sprintf(BOARD, @coordinates)
   end
 
