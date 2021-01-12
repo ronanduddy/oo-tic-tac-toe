@@ -27,9 +27,6 @@ RSpec.describe Grid do
   describe '#add' do
     include_context 'coordinate'
 
-    let(:value) { 'B2' }
-    let(:mark) { 'X' }
-
     let(:grid_output) do
       <<~STR
         1  2  3
@@ -44,9 +41,11 @@ RSpec.describe Grid do
       STR
     end
 
-    it 'adds coordinate to coordinates' do
-      grid.add(coordinate, mark)
-      expect(grid.to_s).to eq grid_output
+    it 'adds piece to grid' do
+      expect(grid.add({ B2: 'X' })).to be true
+      expect(grid.add({ B2: 'X' })).to be false
+      expect(grid.add({ C2: 'X' })).to be true
+      expect(grid.add({ C2: 'O' })).to be false
     end
   end
 end

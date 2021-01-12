@@ -20,4 +20,8 @@ class Player
   def valid?
     @coordinate.valid?
   end
+
+  def current_move
+    { coordinate.intern => mark }
+  end
 end

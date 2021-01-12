@@ -21,6 +21,6 @@ class State
   end
 
   def update(player)
-    @grid.add(player.coordinate, player.mark)
+    @grid.add(player.current_move)
   end
 end

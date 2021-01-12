@@ -20,7 +20,12 @@ class Grid
     sprintf(BOARD, @coordinates)
   end
 
-  def add(coordinate, mark)
-    @coordinates[coordinate.to_s.intern] = mark
+  def add(move)
+    unless @coordinates.key? move.keys.first
+      @coordinates.merge!(move)
+      return true
+    end
+
+    false
   end
 end

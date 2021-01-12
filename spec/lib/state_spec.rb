@@ -25,7 +25,7 @@ RSpec.describe State do
   end
 
   describe '#update' do
-    let(:player) { instance_double(Player, coordinate: 'A1', mark: 'X') }
+    let(:player) { instance_double(Player, current_move: { A1: 'X' }) }
 
     before do
       allow(Grid).to receive(:new).and_return(

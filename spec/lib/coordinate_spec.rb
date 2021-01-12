@@ -14,6 +14,10 @@ RSpec.describe Coordinate do
     it { expect(coordinate.to_s).to eq 'A1' }
   end
 
+  describe '#intern' do
+    it { expect(coordinate.intern).to eq :A1 }
+  end
+
   describe '#valid?' do
     subject(:valid?) { coordinate.valid? }
 

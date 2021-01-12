@@ -19,4 +19,10 @@ RSpec.describe Player do
   describe '#valid?' do
     it { expect(player.move('A1').valid?).to be true }
   end
+
+  describe '#current_move' do
+    before { player.move('A1') }
+
+    it { expect(player.current_move).to eq({ A1: 'X' }) }
+  end
 end
