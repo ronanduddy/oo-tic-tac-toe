@@ -12,4 +12,14 @@ RSpec.describe State do
   describe '#playing?' do
     it { expect(state.playing?).to be true }
   end
+
+  describe '#board' do
+    before do
+      allow(Grid).to receive(:new).and_return(
+        instance_double(Grid, to_s: 'board state')
+      )
+    end
+
+    it { expect(state.board).to eq 'board state' }
+  end
 end

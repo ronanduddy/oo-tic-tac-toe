@@ -15,4 +15,8 @@ class State
   def playing?
     !@game_over
   end
+
+  def board
+    @grid.to_s
+  end
 end

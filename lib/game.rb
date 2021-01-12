@@ -1,36 +1,46 @@
 require_relative 'messenger'
 require_relative 'state'
-require_relative 'coordinate'
+require_relative 'player'
 
 class Game
   def initialize(stdin, stdout)
     @messenger = Messenger.new(stdin, stdout)
     @state = State.new
+    @player = Player.new('X')
+    @computer = Player.new('O')
   end
 
   def run
     while @state.playing? do
-      @messenger.tell(@state.grid.to_s)
-      value = @messenger.ask('Enter your move >')
+      print_board
+      move = @messenger.ask('Enter your move >')
 
-      coordinate = Coordinate.new(value)
+      if @player.move(move).valid?
+        @state.grid.add(move, 'X')
+        print_board
+        print("#{move} - good move.")
 
-      if coordinate.valid?
-        @state.grid.add(coordinate, 'X')
-        @messenger.tell(@state.grid.to_s)
-        @messenger.tell("#{coordinate} - good move.")
-
-        random_coordinate = Coordinate.random
-        @state.grid.add(random_coordinate, 'O')
-        @messenger.tell("Robot enters #{random_coordinate}!")
+        computer_move = @computer.random_move
+        @state.grid.add(computer_move, 'O')
+        print("Robot enters #{computer_move}!")
 
         @state.end_game
       else
-        @messenger.tell("#{coordinate} is invalid")
+        print("#{move} is invalid")
       end
     end
 
-    @messenger.tell(@state.grid.to_s)
-    @messenger.tell("Bye!")
+    print_board
+    print("Bye!")
+  end
+
+  private
+
+  def print_board
+    print(@state.board)
+  end
+
+  def print(message)
+    @messenger.tell(message)
   end
 end
