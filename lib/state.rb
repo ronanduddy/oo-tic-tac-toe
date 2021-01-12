@@ -1,8 +1,6 @@
 require_relative 'grid'
 
 class State
-  attr_reader :grid
-
   def initialize
     @grid = Grid.new
     @game_over = false
