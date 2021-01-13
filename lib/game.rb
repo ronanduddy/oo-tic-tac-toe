@@ -1,13 +1,10 @@
 require_relative 'messenger'
 require_relative 'state'
-require_relative 'player'
 
 class Game
   def initialize(stdin, stdout)
     @messenger = Messenger.new(stdin, stdout)
     @state = State.new
-    @player = Player.new('X')
-    @computer = Player.new('O')
   end
 
   def run
@@ -15,14 +12,12 @@ class Game
       print_board
       move = @messenger.ask('Enter your move >')
 
-      if @player.move(move).valid?
-        @state.update(@player)
+      if @state.player_move(move)
         print_board
         print("#{move} - good move.")
 
-        @computer.random_move(@state.free_locations)
-        @state.update(@computer)
-        print("Robot enters #{@computer.coordinate}!")
+        @state.random_move
+        print("Robot enters #{@state.current_move}!")
 
         @state.end_game
       else
@@ -37,7 +32,7 @@ class Game
   private
 
   def print_board
-    print(@state.grid.to_s)
+    print(@state.grid)
   end
 
   def print(message)

@@ -1,4 +1,5 @@
 require 'game'
+require 'coordinate'
 require 'shared_context/stdlib'
 
 RSpec.describe Game do
@@ -30,7 +31,7 @@ RSpec.describe Game do
            |__|__|__|
 
         A1 - good move.
-        Robot enters C3!
+        Robot enters O -> C3!
             1  2  3
             __ __ __
         A  |X |  |  |
@@ -46,7 +47,7 @@ RSpec.describe Game do
 
       before do
         allow(mock_stdin).to receive(:gets).and_return('A1')
-        allow(Coordinate).to receive(:random).and_return('C3')
+        allow(Coordinate).to receive(:random).and_return(Coordinate.new('C3'))
       end
 
       it 'renders the grid, prompts user and exits' do
@@ -90,7 +91,7 @@ RSpec.describe Game do
            |__|__|__|
 
         A1 - good move.
-        Robot enters C3!
+        Robot enters O -> C3!
             1  2  3
             __ __ __
         A  |X |  |  |
@@ -106,7 +107,7 @@ RSpec.describe Game do
 
       before do
         allow(mock_stdin).to receive(:gets).and_return('Z1', 'A1')
-        allow(Coordinate).to receive(:random).and_return('C3')
+        allow(Coordinate).to receive(:random).and_return(Coordinate.new('C3'))
       end
 
       it 'renders the grid, prompts and quits upon a correct move' do

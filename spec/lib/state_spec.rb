@@ -1,5 +1,6 @@
 require 'state'
 require 'player'
+require 'coordinate'
 
 RSpec.describe State do
   let(:state) { described_class.new }
@@ -14,25 +15,27 @@ RSpec.describe State do
     it { expect(state.playing?).to be true }
   end
 
-  describe '#update' do
-    let(:player) { instance_double(Player, current_move: { A1: 'X' }) }
-
+  describe '#random_move' do
     before do
-      allow(Grid).to receive(:new).and_return(
-        instance_double(Grid, add: true)
+      allow(Coordinate).to receive(:random).and_return(
+        Coordinate.new('A1')
       )
     end
 
-    it { expect(state.update(player)).to be true }
+    before { state.random_move }
+
+    it { expect(state.current_move.to_s).to eq 'O -> A1' }
   end
 
-  describe '#free_locations' do
-    before do
-      allow(Grid).to receive(:new).and_return(
-        instance_double(Grid, coordinates: {A1: nil, A2: 'X', A3: 'O'})
-      )
-    end
+  describe '#player_move' do
+    it 'updates state with new move if valid' do
+      expect(state.player_move('X9')).to be false
 
-    it { expect(state.free_locations).to eq [:A1] }
+      expect(state.player_move('A1')).to be true
+      expect(state.current_move.to_s).to eq 'X -> A1'
+
+      expect(state.player_move('A1')).to be false
+      expect(state.current_move).to be nil
+    end
   end
 end

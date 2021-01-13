@@ -14,7 +14,7 @@ RSpec.describe Coordinate do
       end
     end
   end
-
+  
   describe '#to_s' do
     it { expect(coordinate.to_s).to eq 'A1' }
   end

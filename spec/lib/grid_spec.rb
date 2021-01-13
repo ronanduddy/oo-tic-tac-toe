@@ -1,11 +1,15 @@
 require 'grid'
+require 'move'
+require 'player'
+require 'coordinate'
 require 'shared_context/coordinate'
 
 RSpec.describe Grid do
   let(:grid) { described_class.new }
+  let(:move) { Move.new(Player.new('X'), Coordinate.new('B2')) }
 
-  describe '#board' do
-    let(:grid_output) do
+  describe '#to_s' do
+    let(:output) do
       <<~STR
         1  2  3
         __ __ __
@@ -19,28 +23,51 @@ RSpec.describe Grid do
       STR
     end
 
-    it 'returns an empty grid' do
-      expect(grid.to_s).to eq grid_output
+    let(:output_with_move) do
+      <<~STR
+        1  2  3
+        __ __ __
+    A  |  |  |  |
+       |__|__|__|
+    B  |  |X |  |
+       |__|__|__|
+    C  |  |  |  |
+       |__|__|__|
+
+      STR
+    end
+
+    it 'provides the string state of the grid' do
+      expect(grid.to_s).to eq output
+      grid << move
+      expect(grid.to_s).to eq output_with_move
     end
   end
 
-  describe '#add' do
-    include_context 'coordinate'
+  describe '#each' do
+    before { grid << move }
 
-    let(:expected_coordinates) do
-      { B1: 'X', B2: 'X', B3: 'X', C1: 'O', C2: 'O' }
-    end
+    it { expect(grid.each{}.count).to eq 1 }
+  end
+
+  describe '#<<' do
+    before { grid << move }
+
+    it { expect(grid.count).to eq 1 }
+  end
+
+  describe '#availablities' do
+    let(:player) { Player.new('X') }
+    let(:computer) { Player.new('O') }
 
     before do
-      grid.add({ B2: 'X' })
-      grid.add({ C2: 'O' })
-      grid.add({ B1: 'X' })
-      grid.add({ C1: 'O' })
-      grid.add({ B3: 'X' })
+      grid << Move.new(player, Coordinate.new('A1'))
+      grid << Move.new(computer, Coordinate.new('A3'))
+      grid << Move.new(player, Coordinate.new('B1'))
+      grid << Move.new(computer, Coordinate.new('B3'))
+      grid << Move.new(player, Coordinate.new('C1'))
     end
 
-    it 'adds piece to grid' do
-      expect(grid.coordinates.compact).to eq expected_coordinates
-    end
+    it { expect(grid.availablities).to eq [:A2, :B2, :C2, :C3] }
   end
 end
