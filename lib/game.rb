@@ -20,7 +20,7 @@ class Game
         print_board
         print("#{move} - good move.")
 
-        @computer.random_move
+        @computer.random_move(@state.free_locations)
         @state.update(@computer)
         print("Robot enters #{@computer.coordinate}!")
 

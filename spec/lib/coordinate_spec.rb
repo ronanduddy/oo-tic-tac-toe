@@ -5,7 +5,14 @@ RSpec.describe Coordinate do
   let(:input) { 'A1' }
 
   describe '.random' do
-    it { expect(described_class.random.valid?).to be true }
+    let(:locations) { [:A1, :B2, :C3] }
+
+    10.times do
+      it 'produces either of the locations passed in' do
+        result = described_class.random(locations).intern
+        expect(locations).to include result
+      end
+    end
   end
 
   describe '#to_s' do

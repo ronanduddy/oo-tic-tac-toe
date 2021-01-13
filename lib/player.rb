@@ -7,8 +7,8 @@ class Player
     @mark = mark
   end
 
-  def random_move
-    @coordinate = Coordinate.random
+  def random_move(locations)
+    @coordinate = Coordinate.random(locations)
   end
 
   def move(value)

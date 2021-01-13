@@ -5,7 +5,16 @@ RSpec.describe Player do
   let(:marker) { 'X' }
 
   describe '#random_move' do
-    it { expect(player.random_move.valid?).to be true }
+    let(:coordinate) { instance_double(Coordinate, to_s: 'A1') }
+
+    before do
+      allow(Coordinate).to receive(:random).and_return(coordinate)
+    end
+
+    it 'returns a coordinate based on one of the locations' do
+      expect(Coordinate).to receive(:random).with([:A1, :A2])
+      expect(player.random_move([:A1, :A2]).to_s).to eq 'A1'
+    end
   end
 
   describe '#move' do

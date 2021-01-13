@@ -3,10 +3,8 @@ class Coordinate
     @row, @column = input.split('')
   end
 
-  def self.random
-    row = %w(A B C)[rand(3)]
-    column = rand(1..3)
-    self.new(row + column.to_s)
+  def self.random(locations)
+    self.new(locations.sample.to_s)
   end
 
   def to_s
