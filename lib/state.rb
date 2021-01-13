@@ -1,13 +1,12 @@
 require_relative 'grid'
-require_relative 'player'
 
 class State
-  attr_reader :grid, :player, :computer, :current_move
+  attr_reader :grid, :current_move
 
-  def initialize
+  def initialize(player, computer)
+    @player = player
+    @computer = computer
     @grid = Grid.new
-    @player = Player.new('X')
-    @computer = Player.new('O')
     @game_over = false
   end
 

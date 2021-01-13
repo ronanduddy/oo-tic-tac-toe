@@ -1,5 +1,7 @@
 RSpec.describe State do
-  let(:state) { described_class.new }
+  let(:state) { described_class.new(player, computer) }
+  let(:player) { Player.new('X') }
+  let(:computer) { Player.new('O') }
 
   describe '#end_game' do
     before { state.end_game }

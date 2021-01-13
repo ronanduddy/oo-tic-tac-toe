@@ -1,10 +1,13 @@
 require_relative 'messenger'
+require_relative 'player'
 require_relative 'state'
 
 class Game
   def initialize(stdin, stdout)
     @messenger = Messenger.new(stdin, stdout)
-    @state = State.new
+    @player = Player.new('X')
+    @computer = Player.new('O')
+    @state = State.new(@player, @computer)
   end
 
   def run
