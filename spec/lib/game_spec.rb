@@ -1,11 +1,7 @@
-require 'game'
-require 'coordinate'
-require 'shared_context/stdlib'
-
 RSpec.describe Game do
-  include_context 'stdlib'
-
-  let(:game) { described_class.new(mock_stdin, mock_stdout) }
+  let(:game) { described_class.new(stdin, stdout) }
+  let(:stdin) { StringIO.new }
+  let(:stdout) { StringIO.new }
 
   describe '#run' do
     context 'when the user enters a good coordinate' do
@@ -46,14 +42,14 @@ RSpec.describe Game do
       end
 
       before do
-        allow(mock_stdin).to receive(:gets).and_return('A1')
+        allow(stdin).to receive(:gets).and_return('A1')
         allow(Coordinate).to receive(:random).and_return(Coordinate.new('C3'))
       end
 
       it 'renders the grid, prompts user and exits' do
-        expect(mock_stdin).to receive(:gets)
+        expect(stdin).to receive(:gets)
         game.run
-        expect(mock_stdout.string).to eq grid
+        expect(stdout.string).to eq grid
       end
     end
 
@@ -106,14 +102,14 @@ RSpec.describe Game do
       end
 
       before do
-        allow(mock_stdin).to receive(:gets).and_return('Z1', 'A1')
+        allow(stdin).to receive(:gets).and_return('Z1', 'A1')
         allow(Coordinate).to receive(:random).and_return(Coordinate.new('C3'))
       end
 
       it 'renders the grid, prompts and quits upon a correct move' do
-        expect(mock_stdin).to receive(:gets)
+        expect(stdin).to receive(:gets)
         game.run
-        expect(mock_stdout.string).to eq grid
+        expect(stdout.string).to eq grid
       end
     end
   end

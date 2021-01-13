@@ -1,9 +1,3 @@
-require 'grid'
-require 'move'
-require 'player'
-require 'coordinate'
-require 'shared_context/coordinate'
-
 RSpec.describe Grid do
   let(:grid) { described_class.new }
   let(:move) { Move.new(Player.new('X'), Coordinate.new('B2')) }

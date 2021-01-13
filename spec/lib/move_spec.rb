@@ -1,8 +1,3 @@
-require 'move'
-require 'player'
-require 'coordinate'
-require 'grid'
-
 RSpec.describe Move do
   let(:move) { described_class.new(player, coordinate) }
   let(:player) { Player.new('X') }

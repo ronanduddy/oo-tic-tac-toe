@@ -1,5 +1,3 @@
-require 'player'
-
 RSpec.describe Player do
   let(:player) { described_class.new(mark) }
   let(:mark) { 'X' }

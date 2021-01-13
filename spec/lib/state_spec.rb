@@ -1,7 +1,3 @@
-require 'state'
-require 'player'
-require 'coordinate'
-
 RSpec.describe State do
   let(:state) { described_class.new }
 
