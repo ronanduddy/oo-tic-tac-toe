@@ -35,7 +35,7 @@ class Game
   private
 
   def print_board
-    print(@state.grid)
+    print(@state.board)
   end
 
   def print(message)

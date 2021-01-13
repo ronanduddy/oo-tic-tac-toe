@@ -36,4 +36,14 @@ RSpec.describe State do
       expect(state.current_move).to be nil
     end
   end
+
+  describe '#board' do
+    before do
+      allow(Grid).to receive(:new).and_return(
+        instance_double(Grid, to_s: 'board')
+      )
+    end
+
+    it { expect(state.board).to eq 'board' }
+  end
 end

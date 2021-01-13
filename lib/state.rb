@@ -1,7 +1,7 @@
 require_relative 'grid'
 
 class State
-  attr_reader :grid, :current_move
+  attr_reader :current_move
 
   def initialize(player, computer)
     @player = player
@@ -34,6 +34,10 @@ class State
     @current_move = nil
 
     return false
+  end
+
+  def board
+    @grid.to_s
   end
 
   private
