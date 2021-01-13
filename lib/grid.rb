@@ -1,4 +1,6 @@
 class Grid
+  ROWS = *('A'..'C')
+  COLUMNS = *(1..3)
   BOARD = <<~STR
               1  2  3
               __ __ __
@@ -11,22 +13,32 @@ class Grid
 
             STR
 
+  attr_reader :coordinates
+
   def initialize
-    @coordinates = {}
+    @coordinates = blank_board
   end
 
   def to_s
-    @coordinates.default = ' '
-    
-    sprintf(BOARD, @coordinates)
+    sprintf(BOARD, placed_moves)
   end
 
   def add(move)
-    unless @coordinates.key? move.keys.first
-      @coordinates.merge!(move)
-      return true
+    @coordinates.merge!(move)
+  end
+
+  private
+
+  def blank_board
+    result = {}
+    ROWS.product(COLUMNS).each do |product|
+      result[product.join.intern] = nil
     end
 
-    false
+    result
+  end
+
+  def placed_moves
+    Hash.new(' ').merge(@coordinates.compact)
   end
 end

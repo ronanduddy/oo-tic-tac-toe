@@ -27,25 +27,20 @@ RSpec.describe Grid do
   describe '#add' do
     include_context 'coordinate'
 
-    let(:grid_output) do
-      <<~STR
-        1  2  3
-        __ __ __
-    A  |  |  |  |
-       |__|__|__|
-    B  |  |X |  |
-       |__|__|__|
-    C  |  |  |  |
-       |__|__|__|
+    let(:expected_coordinates) do
+      { B1: 'X', B2: 'X', B3: 'X', C1: 'O', C2: 'O' }
+    end
 
-      STR
+    before do
+      grid.add({ B2: 'X' })
+      grid.add({ C2: 'O' })
+      grid.add({ B1: 'X' })
+      grid.add({ C1: 'O' })
+      grid.add({ B3: 'X' })
     end
 
     it 'adds piece to grid' do
-      expect(grid.add({ B2: 'X' })).to be true
-      expect(grid.add({ B2: 'X' })).to be false
-      expect(grid.add({ C2: 'X' })).to be true
-      expect(grid.add({ C2: 'O' })).to be false
+      expect(grid.coordinates.compact).to eq expected_coordinates
     end
   end
 end

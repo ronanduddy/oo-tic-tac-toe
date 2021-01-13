@@ -25,4 +25,14 @@ RSpec.describe State do
 
     it { expect(state.update(player)).to be true }
   end
+
+  describe '#free_locations' do
+    before do
+      allow(Grid).to receive(:new).and_return(
+        instance_double(Grid, coordinates: {A1: nil, A2: 'X', A3: 'O'})
+      )
+    end
+
+    it { expect(state.free_locations).to eq [:A1] }
+  end
 end

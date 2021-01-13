@@ -19,4 +19,8 @@ class State
   def update(player)
     @grid.add(player.current_move)
   end
+
+  def free_locations
+    @grid.coordinates.select { |_, coordinate| coordinate.nil? }.keys
+  end
 end
