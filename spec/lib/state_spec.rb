@@ -15,8 +15,8 @@ RSpec.describe State do
 
   describe '#random_move' do
     before do
-      allow(Coordinate).to receive(:random).and_return(
-        Coordinate.new('A1')
+      allow(computer).to receive(:random_move).and_return(
+        Move.new(computer, Coordinate.new('A1'))
       )
     end
 

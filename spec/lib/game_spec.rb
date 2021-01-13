@@ -2,6 +2,9 @@ RSpec.describe Game do
   let(:game) { described_class.new(stdin, stdout) }
   let(:stdin) { StringIO.new }
   let(:stdout) { StringIO.new }
+  let(:state) { State.new(player, computer) }
+  let(:player) { Player.new('X') }
+  let(:computer) { Player.new('O') }
 
   describe '#run' do
     context 'when the user enters a good coordinate' do
@@ -43,7 +46,10 @@ RSpec.describe Game do
 
       before do
         allow(stdin).to receive(:gets).and_return('A1')
-        allow(Coordinate).to receive(:random).and_return(Coordinate.new('C3'))
+        allow(State).to receive(:new).and_return(state)
+        allow(computer).to receive(:random_move).and_return(
+          Move.new(computer, Coordinate.new('C3'))
+        )
       end
 
       it 'renders the grid, prompts user and exits' do
@@ -103,7 +109,10 @@ RSpec.describe Game do
 
       before do
         allow(stdin).to receive(:gets).and_return('Z1', 'A1')
-        allow(Coordinate).to receive(:random).and_return(Coordinate.new('C3'))
+        allow(State).to receive(:new).and_return(state)
+        allow(computer).to receive(:random_move).and_return(
+          Move.new(computer, Coordinate.new('C3'))
+        )
       end
 
       it 'renders the grid, prompts and quits upon a correct move' do
