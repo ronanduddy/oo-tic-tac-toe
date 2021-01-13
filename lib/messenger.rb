@@ -4,12 +4,13 @@ class Messenger
     @stdout = stdout
   end
 
-  def ask(message)
-    tell(message)
+  def get(message)
+    print(message)
+    
     @stdin.gets
   end
 
-  def tell(message)
+  def print(message)
     @stdout.puts message
   end
 end

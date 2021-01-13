@@ -10,7 +10,7 @@ class Game
   def run
     while @state.playing? do
       print_board
-      move = @messenger.ask('Enter your move >')
+      move = @messenger.get('Enter your move >')
 
       if @state.player_move(move)
         print_board
@@ -36,6 +36,6 @@ class Game
   end
 
   def print(message)
-    @messenger.tell(message)
+    @messenger.print(message)
   end
 end

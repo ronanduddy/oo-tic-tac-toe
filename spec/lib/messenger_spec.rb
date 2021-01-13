@@ -3,19 +3,19 @@ RSpec.describe Messenger do
   let(:stdin) { StringIO.new }
   let(:stdout) { StringIO.new }
 
-  describe '#ask' do
+  describe '#get' do
     before { allow(stdin).to receive(:gets).and_return('hello there') }
 
     it 'Returns message to stdin' do
       expect(stdin).to receive(:gets)
-      expect(messenger.ask('enter somthing:')).to eq 'hello there'
+      expect(messenger.get('enter somthing:')).to eq 'hello there'
       expect(stdout.string).to eq "enter somthing:\n"
     end
   end
 
-  describe '#tell' do
+  describe '#print' do
     it 'Outputs message to stdout' do
-      messenger.tell('hello world')
+      messenger.print('hello world')
       expect(stdout.string).to eq "hello world\n"
     end
   end
