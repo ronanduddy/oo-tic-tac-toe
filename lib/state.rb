@@ -1,7 +1,5 @@
 require_relative 'grid'
 require_relative 'player'
-require_relative 'move'
-require_relative 'coordinate'
 
 class State
   attr_reader :grid, :player, :computer, :current_move
@@ -22,17 +20,12 @@ class State
   end
 
   def random_move
-    coordinate = Coordinate.random(@grid.availablities)
-    @current_move = Move.new(@computer, coordinate)
-
+    @current_move = @computer.random_move(@grid.availablities)
     update
   end
 
   def player_move(value)
-    coordinate = Coordinate.new(value)
-    return false unless coordinate.valid?
-
-    @current_move = Move.new(@player, coordinate)
+    @current_move = @player.move(value)
 
     if @current_move.valid?(@grid.availablities)
       update

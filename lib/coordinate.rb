@@ -14,8 +14,4 @@ class Coordinate
   def intern
     to_s.intern
   end
-
-  def valid?
-    @row.match?(/[A-C]/) && @column.match?(/[1-3]/)
-  end
 end
