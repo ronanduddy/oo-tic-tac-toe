@@ -3,6 +3,16 @@ RSpec.describe Move do
   let(:player) { Player.new('X') }
   let(:coordinate) { Coordinate.new('A1') }
 
+  describe '#==' do
+    it 'checks the equality of another move' do
+      same_move = described_class.new(Player.new('X'), Coordinate.new('A1'))
+      expect(move == same_move).to be true
+
+      different_move = described_class.new(Player.new('O'), Coordinate.new('A1'))
+      expect(move == different_move).to be false
+    end
+  end
+
   describe '#to_s' do
     it { expect(move.to_s).to eq 'X -> A1' }
   end
