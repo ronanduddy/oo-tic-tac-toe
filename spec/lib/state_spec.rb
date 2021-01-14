@@ -3,16 +3,6 @@ RSpec.describe State do
   let(:player) { Player.new('X') }
   let(:computer) { Player.new('O') }
 
-  describe '#end_game' do
-    before { state.end_game }
-
-    it { expect(state.playing?).to be false }
-  end
-
-  describe '#playing?' do
-    it { expect(state.playing?).to be true }
-  end
-
   describe '#random_move' do
     before do
       allow(computer).to receive(:random_move).and_return(

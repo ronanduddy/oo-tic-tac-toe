@@ -11,18 +11,14 @@ class Game
   end
 
   def run
-    while @state.playing? do
+    while @state.playing do
       print_board
       move = @messenger.get('Enter your move >')
 
       if @state.player_move(move)
         print_board
         print("#{move} - good move.")
-
-        @state.random_move
-        print("Robot enters #{@state.current_move}!")
-
-        @state.end_game
+        print("Robot enters #{@state.current_move}!") if @state.random_move
       else
         print("#{move} is invalid")
       end

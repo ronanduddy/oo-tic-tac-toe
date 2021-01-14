@@ -1,39 +1,28 @@
 require_relative 'grid'
 
 class State
-  attr_reader :current_move
+  attr_reader :playing, :current_move
 
   def initialize(player, computer)
     @player = player
     @computer = computer
     @grid = Grid.new
-    @game_over = false
-  end
-
-  def end_game
-    @game_over = true
-  end
-
-  def playing?
-    !@game_over
+    @playing = true
   end
 
   def random_move
     @current_move = @computer.random_move(@grid.availablities)
+
     update
   end
 
   def player_move(value)
     @current_move = @player.move(value)
-
-    if @current_move.valid?(@grid.availablities)
-      update
-      return true
-    end
+    return update if @current_move.valid?(@grid.availablities)
 
     @current_move = nil
 
-    return false
+    false
   end
 
   def board
@@ -43,6 +32,14 @@ class State
   private
 
   def update
+    if @grid.availablities.empty?
+      @playing = false
+
+      return false
+    end
+
     @grid << @current_move
+
+    true
   end
 end
