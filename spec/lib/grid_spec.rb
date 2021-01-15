@@ -39,7 +39,7 @@ RSpec.describe Grid do
       expect(grid.to_s).to eq output_with_move
     end
   end
-  
+
   describe '#<<' do
     it 'adds the move to the board and increments count' do
       expect(grid.count).to eq 0
@@ -58,5 +58,13 @@ RSpec.describe Grid do
     end
 
     it { expect(grid.availablities).to eq [:A2, :B2, :C2, :C3] }
+  end
+
+  describe '#full?' do
+    it 'checks if the board has reached its capacity' do
+      expect(grid.full?).to be false
+      allow(grid).to receive(:count).and_return(9)
+      expect(grid.full?).to be true
+    end
   end
 end

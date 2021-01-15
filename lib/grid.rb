@@ -11,11 +11,12 @@ class Grid
 
             STR
 
-  attr_reader :count
+  attr_reader :count, :capacity
 
   def initialize
     @board = Array.new(3) { Array.new(3) }
     @count = 0
+    @capacity = 9
   end
 
   def to_s
@@ -36,6 +37,10 @@ class Grid
 
   def availablities
     all_placements - current_placements
+  end
+
+  def full?
+    count == @capacity
   end
 
   private

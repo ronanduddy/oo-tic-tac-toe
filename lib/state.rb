@@ -32,7 +32,7 @@ class State
   private
 
   def update
-    if @grid.availablities.empty?
+    if @grid.full?
       @playing = false
 
       return false
