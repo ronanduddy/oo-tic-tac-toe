@@ -2,6 +2,16 @@ RSpec.describe Player do
   let(:player) { described_class.new(mark) }
   let(:mark) { 'X' }
 
+  describe '#==' do
+    it 'checks the equality of another player' do
+      same_player = described_class.new('X')
+      expect(player == same_player).to be true
+
+      different_player = described_class.new('O')
+      expect(player == different_player).to be false
+    end
+  end
+
   describe '#to_s' do
     it { expect(player.to_s).to eq 'X' }
   end
