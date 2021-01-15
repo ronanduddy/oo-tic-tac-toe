@@ -39,17 +39,13 @@ RSpec.describe Grid do
       expect(grid.to_s).to eq output_with_move
     end
   end
-
-  describe '#each' do
-    before { grid << move }
-
-    it { expect(grid.each{}.count).to eq 1 }
-  end
-
+  
   describe '#<<' do
-    before { grid << move }
-
-    it { expect(grid.count).to eq 1 }
+    it 'adds the move to the board and increments count' do
+      expect(grid.count).to eq 0
+      grid << move
+      expect(grid.count).to eq 1
+    end
   end
 
   describe '#availablities' do

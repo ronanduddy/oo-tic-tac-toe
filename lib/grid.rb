@@ -1,45 +1,50 @@
 class Grid
-  include Enumerable
-
-  ROWS = *('A'..'C')
-  COLUMNS = *(1..3)
   BOARD = <<~STR
               1  2  3
               __ __ __
-          A  |%{A1} |%{A2} |%{A3} |
+          A  |%s |%s |%s |
              |__|__|__|
-          B  |%{B1} |%{B2} |%{B3} |
+          B  |%s |%s |%s |
              |__|__|__|
-          C  |%{C1} |%{C2} |%{C3} |
+          C  |%s |%s |%s |
              |__|__|__|
 
             STR
 
+  attr_reader :count
+
   def initialize
-    @moves = []
+    @board = Array.new(3) { Array.new(3) }
+    @count = 0
   end
 
   def to_s
-    placed_moves = Hash.new(' ')
-    each { |move| placed_moves.merge!(move.to_h) }
-
-    sprintf(BOARD, placed_moves)
-  end
-
-  def each
-    @moves.each do |move|
-      yield move
+    placements = @board.flatten.map do |move|
+      move.nil? ? ' ' : move.player.to_s
     end
+
+    sprintf(BOARD, *placements)
   end
 
   def <<(move)
-    @moves << move
+    row = move.coordinate.row_index
+    column = move.coordinate.column_index
+
+    @board[row][column] = move
+    @count += 1
   end
 
   def availablities
-    current_placement = map { |move| move.coordinate.intern }
-    all_placements = ROWS.product(COLUMNS).map { |product| product.join.intern }
+    all_placements - current_placements
+  end
 
-    all_placements - current_placement
+  private
+
+  def all_placements
+    [*'A'..'C'].product([*1..3]).map { |product| product.join.intern }
+  end
+
+  def current_placements
+    @board.flatten.compact.map { |move| move.coordinate.intern }
   end
 end
