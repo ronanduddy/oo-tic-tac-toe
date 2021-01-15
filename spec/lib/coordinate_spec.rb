@@ -20,4 +20,12 @@ RSpec.describe Coordinate do
   describe '#intern' do
     it { expect(coordinate.intern).to eq :A1 }
   end
+
+  describe '#row_index' do
+    it { expect(coordinate.row_index).to eq 0 }
+  end
+
+  describe '#column_index' do
+    it { expect(coordinate.column_index).to eq 0 }
+  end
 end
