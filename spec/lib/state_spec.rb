@@ -28,12 +28,20 @@ RSpec.describe State do
   end
 
   describe '#board' do
-    before do
-      allow(Grid).to receive(:new).and_return(
-        instance_double(Grid, to_s: 'board')
-      )
+    let(:output) do
+      <<~STR
+          1  2  3
+          __ __ __
+      A  |  |  |  |
+         |__|__|__|
+      B  |  |  |  |
+         |__|__|__|
+      C  |  |  |  |
+         |__|__|__|
+
+       STR
     end
 
-    it { expect(state.board).to eq 'board' }
+    it { expect(state.board).to eq output }
   end
 end

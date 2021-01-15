@@ -11,7 +11,7 @@ class Grid
 
             STR
 
-  attr_reader :count, :capacity
+  attr_reader :board, :count, :capacity
 
   def initialize
     @board = Array.new(3) { Array.new(3) }

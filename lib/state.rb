@@ -1,4 +1,5 @@
 require_relative 'grid'
+require_relative 'referee'
 
 class State
   attr_reader :playing, :current_move
@@ -7,6 +8,7 @@ class State
     @player = player
     @computer = computer
     @grid = Grid.new
+    @referee = Referee.new(@grid)
     @playing = true
   end
 
@@ -32,7 +34,7 @@ class State
   private
 
   def update
-    if @grid.full?
+    if @grid.full? #|| @referee.winner?(player) || @referee.winner?(computer)
       @playing = false
 
       return false
