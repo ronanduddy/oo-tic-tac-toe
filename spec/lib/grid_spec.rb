@@ -1,6 +1,8 @@
 RSpec.describe Grid do
   let(:grid) { described_class.new }
   let(:move) { Move.new(Player.new('X'), Coordinate.new('B2')) }
+  let(:player) { Player.new('X') }
+  let(:computer) { Player.new('O') }
 
   describe '#to_s' do
     let(:output) do
@@ -51,9 +53,6 @@ RSpec.describe Grid do
   end
 
   describe '#availablities' do
-    let(:player) { Player.new('X') }
-    let(:computer) { Player.new('O') }
-
     before do
       grid << Move.new(player, Coordinate.new('A1'))
       grid << Move.new(computer, Coordinate.new('A3'))
