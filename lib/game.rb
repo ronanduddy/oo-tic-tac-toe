@@ -11,23 +11,28 @@ class Game
   end
 
   def run
-    while @state.playing do
-      print_board
-      move = @messenger.get('Enter your move > ')
-
-      if @state.player_move?(move)
-        @state.update
-        @state.random_move
-      else
-        print("#{move} is invalid\n")
-      end
-    end
-
+    game_loop
     print_board
     print_winner
   end
 
   private
+
+  def game_loop
+    while @state.playing do
+      print_board
+      player_input
+    end
+  end
+
+  def player_input
+    if @state.player_move?(@messenger.get('Enter your move > '))
+      @state.update
+      @state.random_move
+    else
+      print("Invalid move\n")
+    end
+  end
 
   def print_board
     print("#{@state.board}")

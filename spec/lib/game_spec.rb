@@ -20,7 +20,7 @@ RSpec.describe Game do
            |__|__|__|
 
         Enter your move >\s
-        Z1 is invalid
+        Invalid move
             1  2  3
             __ __ __
         A  |  |  |  |
