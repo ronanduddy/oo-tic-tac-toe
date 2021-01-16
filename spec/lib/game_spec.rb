@@ -29,7 +29,6 @@ RSpec.describe Game do
         C  |  |  |  |
            |__|__|__|
 
-        A1 - good move.
         Robot enters O -> C3!
             1  2  3
             __ __ __
@@ -50,7 +49,6 @@ RSpec.describe Game do
         C  |  |  |O |
            |__|__|__|
 
-        B1 - good move.
         Robot enters O -> C1!
             1  2  3
             __ __ __
@@ -71,7 +69,6 @@ RSpec.describe Game do
         C  |O |  |O |
            |__|__|__|
 
-        A2 - good move.
         Robot enters O -> A3!
             1  2  3
             __ __ __
@@ -92,7 +89,6 @@ RSpec.describe Game do
         C  |O |  |O |
            |__|__|__|
 
-        B3 - good move.
         Robot enters O -> B2!
             1  2  3
             __ __ __
@@ -160,7 +156,6 @@ RSpec.describe Game do
         C  |  |  |  |
            |__|__|__|
 
-        A1 - good move.
         Robot enters O -> C3!
             1  2  3
             __ __ __

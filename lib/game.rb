@@ -17,7 +17,6 @@ class Game
 
       if @state.player_move(move)
         print_board
-        print("#{move} - good move.")
         print("Robot enters #{@state.current_move}!") if @state.random_move
       else
         print("#{move} is invalid")
