@@ -6,7 +6,7 @@ To run the game:
 make run
 ```
 
-If you would like to run guard for developmentL
+If you would like to run guard for development:
 ```
 make guard
 ```
@@ -16,7 +16,7 @@ You are also able to 'SSH' into the container which is runs the environment:
 make shell
 ```
 
-## Interesting information on TDD
+## Interesting information on TDD (Preface)
 
 First read the book that started it all by Beck, [Test Driven Development: By Example](https://www.goodreads.com/book/show/387190.Test_Driven_Development). Since then there has been some interesting discussion on the application and purpose of TDD.
 
