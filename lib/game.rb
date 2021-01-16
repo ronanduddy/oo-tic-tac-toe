@@ -27,7 +27,7 @@ class Game
 
   def player_input
     if @state.player_move?(@messenger.get('Enter your move > '))
-      @state.update
+      @state.update # don't like this update
       @state.random_move
     else
       print("Invalid move\n")
