@@ -18,7 +18,7 @@ make shell
 
 ## Interesting information on TDD (Preface)
 
-First read the book that started it all by Beck, [Test Driven Development: By Example](https://www.goodreads.com/book/show/387190.Test_Driven_Development){:target="_blank"}. Since then there has been some interesting discussion on the application and purpose of TDD.
+First read the book that started it all by Beck, [Test Driven Development: By Example](https://www.goodreads.com/book/show/387190.Test_Driven_Development). Since then there has been some interesting discussion on the application and purpose of TDD.
 
 There appear to be two approaches to TDD 'mockist' & 'classic' outlined by Mancuso. See the article [Does TDD Really Lead to Good Design?](https://dzone.com/articles/does-tdd-really-lead-good) and the accompanying video [Does TDD Really Lead to Good Design?](https://www.youtube.com/watch?v=KyFVA4Spcgg)
 
