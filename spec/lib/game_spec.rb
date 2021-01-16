@@ -19,7 +19,7 @@ RSpec.describe Game do
         C  |  |  |  |
            |__|__|__|
 
-        Enter your move >
+        Enter your move >\s
             1  2  3
             __ __ __
         A  |X |  |  |
@@ -29,7 +29,7 @@ RSpec.describe Game do
         C  |  |  |O |
            |__|__|__|
 
-        Enter your move >
+        Enter your move >\s
             1  2  3
             __ __ __
         A  |X |  |  |
@@ -39,7 +39,7 @@ RSpec.describe Game do
         C  |O |  |O |
            |__|__|__|
 
-        Enter your move >
+        Enter your move >\s
             1  2  3
             __ __ __
         A  |X |X |O |
@@ -49,7 +49,7 @@ RSpec.describe Game do
         C  |O |  |O |
            |__|__|__|
 
-        Enter your move >
+        Enter your move >\s
             1  2  3
             __ __ __
         A  |X |X |O |
@@ -95,7 +95,7 @@ RSpec.describe Game do
         C  |  |  |  |
            |__|__|__|
 
-        Enter your move >
+        Enter your move >\s
         Z1 is invalid
             1  2  3
             __ __ __
@@ -106,7 +106,7 @@ RSpec.describe Game do
         C  |  |  |  |
            |__|__|__|
 
-        Enter your move >
+        Enter your move >\s
             1  2  3
             __ __ __
         A  |X |  |  |

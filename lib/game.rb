@@ -13,12 +13,12 @@ class Game
   def run
     while @state.playing do
       print_board
-      move = @messenger.get('Enter your move >')
+      move = @messenger.get('Enter your move > ')
 
       if @state.player_move(move)
         @state.random_move
       else
-        print("#{move} is invalid")
+        print("#{move} is invalid\n")
       end
     end
 
@@ -29,15 +29,15 @@ class Game
   private
 
   def print_board
-    print(@state.board)
+    print("#{@state.board}")
   end
 
   def print_winner
     winner = @state.victor
 
-    print('Nobody won...') if winner.nil?
-    print("#{winner} won! :-)") if winner == @player
-    print("#{winner} won! :-(") if winner == @computer
+    print("Nobody won...\n") if winner.nil?
+    print("#{winner} won! :-)\n") if winner == @player
+    print("#{winner} won! :-(\n") if winner == @computer
   end
 
   def print(message)

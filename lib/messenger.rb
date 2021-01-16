@@ -6,11 +6,13 @@ class Messenger
 
   def get(message)
     print(message)
-    
-    @stdin.gets
+    value = @stdin.gets
+    print("\n")
+
+    value
   end
 
   def print(message)
-    @stdout.puts message
+    @stdout.print message
   end
 end

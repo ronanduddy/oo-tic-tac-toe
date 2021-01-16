@@ -8,14 +8,14 @@ RSpec.describe Messenger do
 
     it 'Returns message to stdin' do
       expect(stdin).to receive(:gets)
-      expect(messenger.get('enter somthing:')).to eq 'hello there'
-      expect(stdout.string).to eq "enter somthing:\n"
+      expect(messenger.get("enter somthing: ")).to eq 'hello there'
+      expect(stdout.string).to eq "enter somthing: \n"
     end
   end
 
   describe '#print' do
     it 'Outputs message to stdout' do
-      messenger.print('hello world')
+      messenger.print("hello world\n")
       expect(stdout.string).to eq "hello world\n"
     end
   end
