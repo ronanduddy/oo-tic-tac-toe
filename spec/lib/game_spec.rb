@@ -63,7 +63,7 @@ RSpec.describe Game do
         STR
       end
 
-      let(:player_input) { ['A1', 'B1', 'A2', 'B3', 'C2'] }
+      let(:player_input) { ['A1', 'B1', 'A2', 'B3'] }
 
       before do
         allow(stdin).to receive(:gets).and_return(*player_input)
