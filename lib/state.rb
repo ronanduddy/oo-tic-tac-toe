@@ -12,15 +12,14 @@ class State
     @playing = true
   end
 
-  def random_move 
+  def random_move
     @current_move = @computer.random_move(@grid.availablities)
+    update
   end
 
-  def player_move(value)
+  def player_move?(value)
     @current_move = @player.move(value)
-  end
 
-  def valid_move?
     @current_move.valid?(@grid.availablities)
   end
 
