@@ -1,8 +1,46 @@
 # OO Tic Tac Toe
 
-This is an exercise in TDD-ing and OO Design. It's broken into 7 features:
+## Usage
+To run the game:
+```
+make run
+```
+
+If you would like to run guard for developmentL
+```
+make guard
+```
+
+You are also able to 'SSH' into the container which is runs the environment:
+```
+make shell
+```
+
+## Interesting information on TDD
+
+First read the book that started it all by Beck, [Test Driven Development: By Example](https://www.goodreads.com/book/show/387190.Test_Driven_Development). Since then there has been some interesting discussion on the application and purpose of TDD.
+
+There appear to be two approaches to TDD 'mockist' & 'classic' outlined by Mancuso. See the article [Does TDD Really Lead to Good Design?](https://dzone.com/articles/does-tdd-really-lead-good) and the accompanying video [Does TDD Really Lead to Good Design?](https://www.youtube.com/watch?v=KyFVA4Spcgg).
+
+[TDD and Software Design](https://www.youtube.com/watch?v=ty3p5VDcoOI)
+
+An initial 2014 post by Hansson questioned the various aspects of TDD, it is entitled [TDD is dead. Long live testing](https://dhh.dk/2014/tdd-is-dead-long-live-testing.html). From this post, there has been interesting dialogue between Hansson, Beck and Fowler; the latter seemingly curating their discussions in [Is TDD Dead?](https://martinfowler.com/articles/is-tdd-dead/). The videos documenting these discussions can be found on YouTube:
+
+* [TW Hangouts | Is TDD dead?](https://youtu.be/z9quxZsLcfo)
+* [TW Hangouts | Is TDD dead? \[Part II\]](https://youtu.be/JoTB2mcjU7w)
+* [TW Hangouts | Is TDD dead? \[Part III\]](https://youtu.be/YNw4baDz6WA)
+* [TW Hangouts | Is TDD dead? \[Part IV\]](https://youtu.be/dGtasFJnUxI)
+* [TW Hangouts | Is TDD dead? \[Part V & VI\]](https://youtu.be/gWD6REVeKW4)
+
+Hansson also appears in the RailsConf 2014 keynote outlining some views on [Writing Software](https://youtu.be/9LfmrkyP81M).
+
+Finally there is this excellent video from 2017 by Cooper entitled [TDD, Where Did It All Go Wrong](https://www.youtube.com/watch?v=EZ05e7EMOLM).
+
+I have added this preface to help give some context on TDD, or its application today beacuse, from my reading and research there are mixed feelings on it. My own views are that the approach can be useful like any other tool/method depending on the context or use case.
 
 ## Features
+
+This is an exercise in TDD-ing and OO Design. It's broken into 7 features:
 
 1. When you run ruby `tic_tac_toe/game_runner.rb`, an empty grid is rendered on the screen.
 ```
@@ -94,5 +132,3 @@ Go through each of the rules and see which ones feel like a fit for any given ar
 
 #### Repeat more tightly
 After the first couple of features, or however long it takes to get into a green-red-refactor cadance, switch to doing smaller PRs that incorporate this three part flow. You will start to get more typcial feedback from your mentor that talks about how to improve the tests, better cover the feature, or improve the refactoring.
-
-
