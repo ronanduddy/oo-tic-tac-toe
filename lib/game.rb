@@ -16,8 +16,7 @@ class Game
       move = @messenger.get('Enter your move >')
 
       if @state.player_move(move)
-        print_board
-        print("Robot enters #{@state.current_move}!") if @state.random_move
+        @state.random_move
       else
         print("#{move} is invalid")
       end
