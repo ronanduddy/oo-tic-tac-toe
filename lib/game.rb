@@ -14,9 +14,12 @@ class Game
     while @state.playing do
       print_board
       move = @messenger.get('Enter your move > ')
+      @state.player_move(move)
 
-      if @state.player_move(move)
+      if @state.valid_move?
+        @state.update
         @state.random_move
+        @state.update
       else
         print("#{move} is invalid\n")
       end

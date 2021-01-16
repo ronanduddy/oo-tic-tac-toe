@@ -10,21 +10,25 @@ RSpec.describe State do
       )
     end
 
-    before { state.random_move }
-
-    it { expect(state.current_move.to_s).to eq 'O -> A1' }
+    it 'sets current_move' do
+      expect(state.current_move).to be nil
+      state.random_move
+      expect(state.current_move).to eq Move.new(computer, Coordinate.new('A1'))
+    end
   end
 
   describe '#player_move' do
-    it 'updates state with new move if valid' do
-      expect(state.player_move('X9')).to be false
-
-      expect(state.player_move('A1')).to be true
-      expect(state.current_move.to_s).to eq 'X -> A1'
-
-      expect(state.player_move('A1')).to be false
+    it 'sets current_move' do
       expect(state.current_move).to be nil
+      state.player_move('A1')
+      expect(state.current_move).to eq Move.new(player, Coordinate.new('A1'))
     end
+  end
+
+  describe '#valid_move?' do
+    before { state.player_move('A1') }
+
+    it { expect(state.valid_move?).to be true }
   end
 
   describe '#board' do

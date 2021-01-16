@@ -12,19 +12,21 @@ class State
     @playing = true
   end
 
-  def random_move
+  def random_move 
     @current_move = @computer.random_move(@grid.availablities)
-
-    update
   end
 
   def player_move(value)
     @current_move = @player.move(value)
-    return update if @current_move.valid?(@grid.availablities)
+  end
 
-    @current_move = nil
+  def valid_move?
+    @current_move.valid?(@grid.availablities)
+  end
 
-    false
+  def update
+    @grid.full? ? end_game : update_grid
+    end_game if winner
   end
 
   def board
@@ -33,24 +35,18 @@ class State
 
   private
 
-  def update
-    if @grid.full?
-      @playing = false
-
-      return false
-    end
-
+  def update_grid
     @grid << @current_move
-
-    if winner?
-      @playing = false
-      @victor = @current_move.player
-    end
-
-    true
   end
 
-  def winner?    
-    @referee.winner?(@player) || @referee.winner?(@computer)
+  def winner
+    @victor = @player if @referee.winner?(@player)
+    @victor = @computer if @referee.winner?(@computer)
+
+    @victor
+  end
+
+  def end_game
+    @playing = false
   end
 end
