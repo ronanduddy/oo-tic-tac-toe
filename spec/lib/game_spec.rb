@@ -21,15 +21,6 @@ RSpec.describe Game do
 
         Enter your move >\s
         Invalid move
-            1  2  3
-            __ __ __
-        A  |  |  |  |
-           |__|__|__|
-        B  |  |  |  |
-           |__|__|__|
-        C  |  |  |  |
-           |__|__|__|
-
         Enter your move >\s
             1  2  3
             __ __ __

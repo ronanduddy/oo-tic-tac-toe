@@ -21,21 +21,39 @@ class Game
   def game_loop
     while @state.playing do
       print_board
-      player_input
-    end
-  end
-
-  def player_input
-    if @state.player_move?(@messenger.get('Enter your move > '))
-      @state.update # don't like this update
-      @state.random_move
-    else
-      print("Invalid move\n")
+      player_move
+      robot_move
     end
   end
 
   def print_board
     print("#{@state.board}")
+  end
+
+  def player_move
+    loop do
+      break if move_succeeded?
+
+      print("Invalid move\n")
+    end
+  end
+
+  def move_succeeded?
+    if @state.player_move?(move)
+      @state.update
+
+      return true
+    end
+
+    false
+  end
+
+  def move
+    @messenger.get('Enter your move > ')
+  end
+
+  def robot_move
+    @state.random_move
   end
 
   def print_winner
