@@ -11,7 +11,7 @@ If you would like to run guard for development:
 make guard
 ```
 
-You are also able to 'SSH' into the container which is runs the environment:
+You are also able to 'SSH' into the container which runs the environment:
 ```
 make shell
 ```
