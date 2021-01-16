@@ -4,7 +4,7 @@ RSpec.describe Messenger do
   let(:stdout) { StringIO.new }
 
   describe '#get' do
-    before { allow(stdin).to receive(:gets).and_return('hello there') }
+    before { allow(stdin).to receive(:gets).and_return(" hello there \n") }
 
     it 'Returns message to stdin' do
       expect(stdin).to receive(:gets)

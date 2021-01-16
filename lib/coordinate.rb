@@ -5,7 +5,7 @@ class Coordinate
   attr_reader :row, :column
 
   def initialize(input)
-    @row, @column = input.split('')
+    @row, @column = input&.split('')
   end
 
   def self.random(locations)
@@ -13,7 +13,7 @@ class Coordinate
   end
 
   def to_s
-    @row + @column
+    "#{@row}#{@column}"
   end
 
   def intern

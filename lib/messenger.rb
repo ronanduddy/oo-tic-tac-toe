@@ -9,7 +9,7 @@ class Messenger
     value = @stdin.gets
     print("\n")
 
-    value
+    value.strip
   end
 
   def print(message)
