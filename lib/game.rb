@@ -25,13 +25,21 @@ class Game
     end
 
     print_board
-    print("Bye!")
+    print_winner
   end
 
   private
 
   def print_board
     print(@state.board)
+  end
+
+  def print_winner
+    winner = @state.victor
+
+    print('Nobody won...') if winner.nil?
+    print("#{winner} won! :-)") if winner == @player
+    print("#{winner} won! :-(") if winner == @computer
   end
 
   def print(message)

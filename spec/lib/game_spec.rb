@@ -103,27 +103,7 @@ RSpec.describe Game do
         C  |O |  |O |
            |__|__|__|
 
-        Enter your move >
-            1  2  3
-            __ __ __
-        A  |X |X |O |
-           |__|__|__|
-        B  |X |O |X |
-           |__|__|__|
-        C  |O |X |O |
-           |__|__|__|
-
-        C2 - good move.
-            1  2  3
-            __ __ __
-        A  |X |X |O |
-           |__|__|__|
-        B  |X |O |X |
-           |__|__|__|
-        C  |O |X |O |
-           |__|__|__|
-
-        Bye!
+        O won! :-(
         STR
       end
 
@@ -191,7 +171,7 @@ RSpec.describe Game do
         C  |  |  |O |
            |__|__|__|
 
-        Bye!
+        Nobody won...
         STR
       end
 

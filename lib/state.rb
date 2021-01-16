@@ -2,7 +2,7 @@ require_relative 'grid'
 require_relative 'referee'
 
 class State
-  attr_reader :playing, :current_move
+  attr_reader :playing, :current_move, :victor
 
   def initialize(player, computer)
     @player = player
@@ -34,7 +34,7 @@ class State
   private
 
   def update
-    if @grid.full? #|| @referee.winner?(player) || @referee.winner?(computer)
+    if @grid.full?
       @playing = false
 
       return false
@@ -42,6 +42,15 @@ class State
 
     @grid << @current_move
 
+    if winner?
+      @playing = false
+      @victor = @current_move.player
+    end
+
     true
+  end
+
+  def winner?    
+    @referee.winner?(@player) || @referee.winner?(@computer)
   end
 end
