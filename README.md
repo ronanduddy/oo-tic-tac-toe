@@ -20,7 +20,7 @@ make shell
 
 First read the book that started it all by Beck, [Test Driven Development: By Example](https://www.goodreads.com/book/show/387190.Test_Driven_Development). Since then there has been some interesting discussion on the application and purpose of TDD.
 
-There appear to be two approaches to TDD 'Classicist' (original Beck-style) & 'Mockist' (or 'outside-in') outlined by Mancuso. See the article [Does TDD Really Lead to Good Design?](https://dzone.com/articles/does-tdd-really-lead-good) and the accompanying video [Does TDD Really Lead to Good Design?](https://www.youtube.com/watch?v=KyFVA4Spcgg)
+There appear to be two approaches to TDD called 'Classicist' (original Beck-style) & 'Mockist' (or 'outside-in') outlined by Mancuso. See the article [Does TDD Really Lead to Good Design?](https://dzone.com/articles/does-tdd-really-lead-good) and the accompanying video [Does TDD Really Lead to Good Design?](https://www.youtube.com/watch?v=KyFVA4Spcgg)
 
 An initial 2014 post by Hansson questioned the various aspects of TDD, it is entitled [TDD is dead. Long live testing](https://dhh.dk/2014/tdd-is-dead-long-live-testing.html). From this post, there has been interesting dialogue between Hansson, Beck and Fowler; the latter seemingly curating their discussions in [Is TDD Dead?](https://martinfowler.com/articles/is-tdd-dead/) The videos documenting these discussions can be found on YouTube:
 
