@@ -34,7 +34,10 @@ Hansson also appears in the RailsConf 2014 keynote outlining some views on [Writ
 
 I have added this preface to help give some context on TDD, or its application today beacuse, from my reading and research there are mixed feelings on it. My own views are that the approach can be useful like any other tool/method depending on the context or use case.
 
-An additional discussion on [TDD and Software Design](https://www.youtube.com/watch?v=ty3p5VDcoOI) has also been floating around. 
+Some other videos:
+* [TDD and Software Design](https://www.youtube.com/watch?v=ty3p5VDcoOI)
+* [Jim Coplien and Bob Martin Debate TDD](https://www.youtube.com/watch?v=KtHQGs3zFAM)
+* [Is TDD dead? Of course not! But what´s all the fuzz about then? Emily Bache](https://www.youtube.com/watch?v=PCEHRFHKZSk)
 
 Apologies for any typos. 
 
